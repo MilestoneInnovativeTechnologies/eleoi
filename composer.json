@@ -3,7 +3,7 @@
     "description": "Online Inventory for Elements",
     "type": "online-inventory-laravel-package",
     "require": {
-        "laravel/laravel": "9.x-dev"
+        "laravel/laravel": "^9"
     },
     "autoload": {
         "psr-4": {
