@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Milestone\Eleoi\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -8,7 +8,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class BrandSeeder extends Seeder
+class DivisionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
-        $name = 'brand';
+        $name = 'division';
         $CONTENTS = array_map(fn($line) => array_combine(['value','ids'],explode("\t",trim($line))),file(Storage::path(str($name)->plural()->append('.txt')->toString())));
         $property = DB::table('_properties')->where(compact('name'))->first()->id;
         DB::table('_property_masters')->where(compact('property'))->delete();
