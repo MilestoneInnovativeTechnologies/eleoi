@@ -1,0 +1,28 @@
+{
+    "name": "milestone/eleoi",
+    "description": "Online Inventory for Elements",
+    "type": "online-inventory-laravel-package",
+    "require": {
+        "laravel/laravel": "9.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Milestone\\Eleoi\\": "src/"
+        },
+        "files": ["helpers.php"]
+    },
+    "authors": [
+        {
+            "name": "Milestone Innovative Technologies",
+            "email": "milestoneit.net@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Milestone\\Eleoi\\EleoiServiceProvider"
+            ]
+        }
+    }
+}
