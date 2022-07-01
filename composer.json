@@ -1,7 +1,7 @@
 {
     "name": "milestone/eleoi",
     "description": "Online Inventory for Elements",
-    "type": "online-inventory-laravel-package",
+    "type": "laravel-package",
     "require": {
         "laravel/laravel": "^9"
     },

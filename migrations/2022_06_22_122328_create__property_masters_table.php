@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('_property_masters', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('property')->index();
-            $table->string('value',128)->index();
+            $table->unsignedBigInteger('property')->index();
+            $table->unsignedBigInteger('data')->index()->nullable();
+            $table->string('value',512)->nullable();
             $table->mediumText('ids')->nullable();
             $table->timestamps();
         });
