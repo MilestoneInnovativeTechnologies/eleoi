@@ -16,7 +16,7 @@ class UnitSeeder extends Seeder
      */
     public function run()
     {
-        $CONTENTS = file(Storage::path('UNITS.txt')); $master = 2;
+        $CONTENTS = file(Storage::path('UNITS.txt')); $master = DB::table('_masters')->where('name','UNIT')->value('id');
         DB::table('_master_data')->where(compact('master'))->delete();
         foreach (array_chunk(SeedMasterFn($CONTENTS,compact('master')),1000) as $chunk) DB::table('_master_data')->insert($chunk);
     }

@@ -19,5 +19,5 @@ class MasterSeeder extends Seeder
         DB::table('_masters')->insert(SeedMasterFn(self::$CONTENTS));
     }
 
-    private static array $CONTENTS = ['ITEM','UNIT','BARCODE','DEPARTMENT','DIVISION','CATEGORY','GROUP','BRAND','CUSTOMER','PRICE_LIST'];
+    private static array $CONTENTS = ['ITEM','UNIT','CUSTOMER','BARCODE','DEPARTMENT','DIVISION','CATEGORY','GROUP','BRAND','TAX','PRICE_LIST'];
 }

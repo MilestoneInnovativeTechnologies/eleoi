@@ -16,7 +16,8 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-        $CONTENTS = array_map(fn($line) => array_combine(['id','name'],explode("\t",trim($line))),file(Storage::path('ITEMS.txt'))); $master = 1;
+        $master = DB::table('_masters')->where('name','ITEM')->value('id');
+        $CONTENTS = array_map(fn($line) => array_combine(['id','name'],explode("\t",trim($line))),file(Storage::path('ITEMS.txt')));
         DB::table('_master_data')->where(compact('master'))->delete();
         foreach (array_chunk(SeedMasterFn($CONTENTS,compact('master')),1000) as $chunk) DB::table('_master_data')->insert($chunk);
     }
