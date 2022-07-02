@@ -3,6 +3,7 @@
 namespace Milestone\Eleoi;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class EleoiServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,14 @@ class EleoiServiceProvider extends ServiceProvider
     {
         if($this->app->runningInConsole()){
             $this->loadMigrationsFrom(__DIR__.'/../migrations');
+            $this->publishes([__DIR__ . '/../public' => public_path()],'eleoi-assets');
+            $this->publishes([__DIR__ . '/../install' => base_path()],'eleoi-install');
+            $this->publishes([__DIR__ . '/../install/src' => base_path('src')],'eleoi-resources');
+            $this->publishes([__DIR__ . '/../public' => public_path(),__DIR__ . '/../install/src' => base_path('src')],'eleoi-updates');
+        } else {
+            Route::pattern('eleoi_segments', '.*');
+            $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+            $this->loadViewsFrom(__DIR__ . '/../views','Eleoi');
         }
     }
 }
