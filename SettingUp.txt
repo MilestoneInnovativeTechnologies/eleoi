@@ -1,0 +1,100 @@
+Step by step procedure to setup development environment..
+
+CMD with Admin Privilege
+Goto D:\htdocs\InventoryProject
+laravel New <YourName>
+
+Open file C:\Windows\System32\drivers\etc\hosts
+Add a line 
+	127.0.0.1       oi<name>
+Ex: 
+	127.0.0.1       oifirose
+Save file
+
+Open file C:\Program Files\Apache24\conf\extra\httpd-vhosts.conf
+Add following lines
+<VirtualHost *:80>
+	ServerName oi<name>
+    DocumentRoot "D:/htdocs/InventoryProject/<Name>/public"
+</VirtualHost>
+Ex:
+<VirtualHost *:80>
+	ServerName oifirose
+    DocumentRoot "D:/htdocs/InventoryProject/Firose/public"
+</VirtualHost>
+
+restart apache server
+httpd -k restart
+
+visit http://oi<name> using browser, Ex: http://oifirose
+If laravel page views properly, Laravel setup is completed..
+
+=====================================================
+
+Using cmd
+Get into the laravel project folder
+Ex: D:\htdocs\InventoryProject\Firose
+create folder milestone, and get into it, then clone project files from repository
+mkdir milestone
+cd milestone
+git clone https://github.com/MilestoneInnovativeTechnologies/eleoi.git
+
+Add to laravel root composer.json
+autoload
+	"files": ["milestone/eleoi/helpers.php"]
+autoload > psr-4
+	"Milestone\\Eleoi\\": "milestone/eleoi/src/"
+
+Add to config > app > providers
+	\Milestone\SmartKitchen\EleoiServiceProvider::class,
+
+Correct config > app > timezone Ex: Asia/Kolkata
+Create Database and set details in env file
+Run
+php artisan migrate:fresh
+
+If need dummy data, then copy data files to storage > app, then run
+php artisan db:seed --class=Milestone\Eleoi\Seeders\DatabaseSeeder
+
+=====================================================
+
+run
+php artisan vendor:publish --force
+then enter number corresponding to EleoiServiceProvider from the list
+
+run
+npm install
+for istalling node modules
+
+npm run dev
+for starting dev server. Please note the port number from console. Browse for 
+http://<name>:<port> to load the page. Ex: http://oifirose:9000
+
+for production, run
+npm run build
+
+=====================================================
+
+Publishing Assets - Different methods
+php artisan vendor:publish --force
+eleoi-assets: All javascript,stylesheets,fonts. No need to publish this frequently
+eleoi-install: All required files for starting developement using quasar.. Quasar source files and package.json files.. No need to do publish frequently.
+eleoi-resources: All required files for starting developement using quasar.. Quasar source files and package.json files..  No need to do publish frequently. Publish only when github updated and needed the source codes changes, but not compiled assets
+eleoi-updates: All assets and resource files.. This need to be published when github updated, and starting developement from it.
+
+=====================================================
+
+Shifting between development and production..
+When appending the browser url with port number, it will be shifted to development
+Please note, development will be available only if npm run dev should be called and its running..
+If no port appended, or serving on port 80, then production assets will be used and served...
+
+=====================================================
+
+When building,All the source files of package will be updated..
+Initially deleted every files and folders from package's public/assets and all files from public
+Then copies every files from dist/spa to package's public folder (except index.html)[Which is not required there as index page serves from laravel view]
+After that, quasar src folder files will be copied to packages install/src..
+Once this done, extracts js and css file names from dist/spa/index.html and stores as assets.json in packages public/assets
+Finally, package's public folder will be copied to laravels public folder
+
