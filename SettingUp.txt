@@ -48,6 +48,8 @@ autoload > psr-4
 Add to config > app > providers
 	\Milestone\Eleoi\EleoiServiceProvider::class,
 
+Run composer dump-autoload
+
 Correct config > app > timezone Ex: Asia/Kolkata
 Create Database and set details in env file
 Run from root laravel project folder
