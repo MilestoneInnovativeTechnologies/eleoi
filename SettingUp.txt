@@ -46,12 +46,13 @@ autoload > psr-4
 	"Milestone\\Eleoi\\": "milestone/eleoi/src/"
 
 Add to config > app > providers
-	\Milestone\SmartKitchen\EleoiServiceProvider::class,
+	\Milestone\Eleoi\EleoiServiceProvider::class,
 
 Correct config > app > timezone Ex: Asia/Kolkata
 Create Database and set details in env file
-Run
+Run from root laravel project folder
 php artisan migrate:fresh
+
 
 If need dummy data, then copy data files to storage > app, then run
 php artisan db:seed --class=Milestone\Eleoi\Seeders\DatabaseSeeder
