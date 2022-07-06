@@ -13,5 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('master/asset/{time}/{name}.js',function($id,$name){
+    return 'const __master_asset_' . $name .' = ' . $id;
+})->name('master_asset_js')->middleware('cache.headers:public;max_age=2628000;etag');
+
 Route::view('/','Eleoi::home');
 Route::view('{eleoi_segments}', 'Eleoi::home');
+
