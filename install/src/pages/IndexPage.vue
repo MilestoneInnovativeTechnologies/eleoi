@@ -5,7 +5,7 @@
       src="~assets/quasar-logo-vertical.svg"
       style="width: 100px; height: 100px"
     >
-    <q-badge class="q-mt-xl q-pa-md" label="HAO" color="amber" />
+    <q-badge class="q-mt-xl q-pa-md" label="TIKKE" color="secondary" />
   </q-page>
 </template>
 
