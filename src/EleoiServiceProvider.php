@@ -30,7 +30,6 @@ class EleoiServiceProvider extends ServiceProvider
             $this->publishes([__DIR__ . '/../install' => base_path()],'eleoi-install');
             $this->publishes([__DIR__ . '/../install/src' => base_path('src')],'eleoi-resources');
             $this->publishes([__DIR__ . '/../public' => public_path(),__DIR__ . '/../install/src' => base_path('src')],'eleoi-updates');
-            
             $this->publishes([__DIR__ . '/../config/eleoi.php' => config_path('eleoi.php')],'eleoi-config');
         } else {
             Route::pattern('eleoi_segments', '.*');
