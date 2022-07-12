@@ -29,7 +29,7 @@ class PropertySeeder extends Seeder
         foreach (['price_list'] as $name) $content[] = ['master' => $masters['CUSTOMER'],'name' => $name, 'value_master' => $masters[strtoupper($name)],'index' => 'Y','control' => 'select','created_at' => now()->toDateTimeString(), 'updated_at' => now()->toDateTimeString()];
         DB::table('_properties')->insert($content);
         DB::table('_properties')->insert(['master' => $masters['BARCODE'],'name' => 'item','value_master' => $masters['ITEM'],'control' => 'select','created_at' => now()->toDateTimeString(), 'updated_at' => now()->toDateTimeString()]);
-        DB::table('_properties')->insert(['master' => $masters['BARCODE'],'name' => 'unit','value_master' => $masters['UNIT'],'control' => 'radio','created_at' => now()->toDateTimeString(), 'updated_at' => now()->toDateTimeString()]);
+        DB::table('_properties')->insert(['master' => $masters['BARCODE'],'name' => 'unit','control' => 'radio','created_at' => now()->toDateTimeString(), 'updated_at' => now()->toDateTimeString()]);
         DB::table('_properties')->insert(['master' => $masters['TAX'],'name' => 'percentage','control' => 'number','created_at' => now()->toDateTimeString(), 'updated_at' => now()->toDateTimeString()]);
 
         DB::table('_properties')->insert(['master' => $masters['PRICE_LIST'],'name' => 'default','nature' => 'Y/N','created_at' => now()->toDateTimeString(), 'updated_at' => now()->toDateTimeString()]);
