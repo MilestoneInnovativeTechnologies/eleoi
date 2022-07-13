@@ -1,9 +1,8 @@
 <?php
 
 exec('DEL /Q /S milestone\\eleoi\\public\\assets\\*.*');
-exec('DEL /Q milestone\\eleoi\\public\\*.*');
+exec('XCOPY dist\\spa\\assets milestone\\eleoi\\public\\assets /EHRYI');
 
-exec('XCOPY dist\\spa milestone\\eleoi\\public /exclude:index.html /EHRYI');
 exec('XCOPY src milestone\\eleoi\\install\\src /EHRYI');
 
 $json = [];

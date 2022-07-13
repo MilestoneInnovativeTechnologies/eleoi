@@ -1,0 +1,1 @@
+import{d as e}from"./index.5bac70ec.js";const o=e("master",{state:()=>{const r=_(MASTERS).mapKeys().mapValues(()=>({})).value();return{masters:{},props:{},...r}},getters:{properties(r){return _.flatMap(r.props)}},actions:{data(r){_.forEach(r,(s,t)=>this[t]=s)},property(r){_.forEach(r,(s,t)=>this.props[t]=s)},master(r){_.forEach(r,(s,t)=>this.masters[t]=s)}}});export{o as u};

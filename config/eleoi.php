@@ -4,25 +4,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | db_masters_cache_key
+    | cache_key
     |--------------------------------------------------------------------------
     |
-    | This value decides in what variable name the applications masters to be saved
-    | Whenever an update occurs in this db table, this cache will also get refreshed
+    | These value decides in what variable name the application's master data and time to be stored
+    | Whenever an update occurs in corresponding db table, corresponding cache will also get refreshed
     |
     */
 
-    'db_masters_cache_key'  =>  'DB_MASTERS',
-
-    /*
-    |--------------------------------------------------------------------------
-    | db_master_data_max_cache_key
-    |--------------------------------------------------------------------------
-    |
-    | This value decides in what variable name the master data maximum updated time to be stored
-    | Whenever an update occurs in this db table, this cache will also get refreshed
-    |
-    */
-
-    'db_master_data_max_cache_key'  =>  'DB_MASTER_DATA_MAX',
+    'cache_key' => [
+        'db_masters'  =>  'DB_MASTERS',
+        'db_master_data_max_times'  =>  'DB_MASTER_DATA_MAX_TIME',
+        'db_properties'  =>  'DB_PROPERTIES',
+        'db_master_data'  =>  'DB_MASTER_DATA',
+        'db_properties_last_updated_time'  =>  'DB_PROPERTIES_LAST_UPDATED_TIME',
+    ],
 ];
