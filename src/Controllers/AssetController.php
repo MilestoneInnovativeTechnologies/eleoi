@@ -20,7 +20,7 @@ const MASTERS = $masters;
 AssetWorker = new Worker('AssetWorker.js');
 AssetWorker.postMessage({ type:'init',payload:{ masters:$masters,property_time:$prop_time,master_time:$master_time } });
 SCRIPT;
-        return response($script)->withHeaders(["Cache-Control" => "no-cache, must-revalidate, no-store, max-age=0, private"]);
+        return response($script)->withHeaders(["Cache-Control" => "no-cache, must-revalidate, no-store, max-age=0, private","Content-Type" => "application/javascript"]);
     }
 
     public function properties($time) {
