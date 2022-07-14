@@ -21,7 +21,7 @@ return [
     ],
 
     'brand_colors' => [
-        "primary" => "#FF0000",
+        "primary" => "#1976D2",
         "secondary" => "#26A69A",
         "accent" => "#9C27B0",
         "positive" => "#21BA45",
