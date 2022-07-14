@@ -12,6 +12,7 @@
     <link rel=icon type=image/png sizes=16x16 href="{!! $origin !!}/icons/favicon-16x16.png">
     <link rel=icon type=image/ico href="{!! $origin !!}/favicon.ico">
     <script type="text/javascript" src="{!! $origin !!}/init.js"></script>
+    <style> html:root { @foreach(eleoi_config('brand_colors') as $brand => $color) --q-{{ $brand }}:{{ $color }};@endforeach } </style>
 </head>
 <body>
 <div id=q-app></div>
