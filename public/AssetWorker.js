@@ -27,7 +27,7 @@ function handlePropertiesResponse(response){
     _.forEach(PROPERTIES,function(properties,master){
       let pObj = new Object({});
       _.forEach(properties,function(property){
-        pObj[property.name] = property['nature'] === 'Y/N' ? false : (property['nature'] === 'Multiple' ? null : ((property['value_master'] || property['index'] === 'Y') ? { master:property['value_master'],data:null,value:null } : null))
+        pObj[property.name] = property['nature'] === 'Y/N' ? false : (property['nature'] === 'Multiple' ? [] : ((property['value_master'] || property['index'] === 'Y') ? { master:property['value_master'],data:null,value:null } : null))
       })
       PROP_SET[String(master)] = pObj
     })
@@ -47,7 +47,6 @@ function doFetchMasterDataProperties(idx){
 }
 
 function MastersFetched(){
-  // console.log(STORE_MASTER)
   doFetchMasterDataProperties(0)
 }
 function PropertiesFetched(){
@@ -60,7 +59,7 @@ function handleMasterDataResponse(idx,MAry){
   let mName = MASTERS[idx][1], mId = String(MASTERS[idx][0]);
   _.forEach(MAry,function(master){
     let id = String(master[0]), name = _.trim(master[1]);
-    STORE_MASTER[mName][id] = Object.assign({ id,name },_.get(PROP_SET,mId))
+    STORE_MASTER[mName][id] = _.cloneDeep(Object.assign({ id,name },_.get(PROP_SET,mId)))
   })
   let BProps = _(_.get(PROPERTIES,mId)).filter(['nature','Y/N']).mapKeys('name').mapValues(prop => _.get(prop,['masters',0,'ids'],[])).value(), dBProp = {};
   _.forEach(BProps,function(ids,prop_name){
@@ -133,7 +132,6 @@ function handleDataPropertiesResponse(idx,PAry){
         }
       })
     }
-    if(pName === 'status') console.log(JSON.stringify(SMI))
     _.merge(STORE_MASTER[mName],SMI)
   })
   doFetchMasterDataProperties(idx+1)
