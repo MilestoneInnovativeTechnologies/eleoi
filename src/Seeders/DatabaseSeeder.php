@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+        ini_set("memory_limit","1024M");
         $this->call([
             MasterSeeder::class,
             PropertySeeder::class,
@@ -28,7 +28,10 @@ class DatabaseSeeder extends Seeder
             DivisionSeeder::class,
             GroupSeeder::class,
             ItemUnitsSeeder::class,
+            TaxSeeder::class,
             BarcodeSeeder::class,
+            PriceListSeeder::class,
+            PricesSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 
